@@ -3,126 +3,283 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Halaman admin NeroPC untuk pengelolaan penjualan PC Rakitan">
-  <title>NeroPC Admin - Platform Penjualan PC Rakitan</title>
+  <meta name="description" content="NeroPC - Platform Penjualan PC Rakitan terpercaya di Indonesia">
+  <title>NeroPC - Platform Penjualan PC Rakitan</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!--HEADER-->
   <header>
-    <img src="Logo Sementara.png" alt="Logo NeroPC" width="60" height="60">
-    <h1>NeroPC</h1>
-    <p>NPC - Platform Penjualan PC Rakitan</p>
-    <hr>
+    <img src="Logo Sementara.png" alt="Logo NeroPC" width="70" height="70">
+    <div class="header-text">
+      <h1>NeroPC</h1>
+      <p>NPC - Platform Penjualan PC Rakitan</p>
+    </div>
   </header>
 
+  <!--NAVIGASI-->
   <nav>
-    <h2>Menu</h2>
     <ul>
-      <li><a href="dashboard">Dashboard</a></li>
-      <li><a href="produk">Produk</a></li>
-      <li><a href="statistik">Statistik</a></li>
-      <li><a href="kontak">Kontak</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#produk">Produk</a></li>
+      <li><a href="#statistik">Statistik</a></li>
+      <li><a href="#kontak">Kontak</a></li>
     </ul>
-    <hr>
   </nav>
 
-  <!-- Konten Utama -->
-  <main>
+  <!--HERO-->
+  <section class="hero">
+    <div class="hero-overlay">
+      <h2>Rakit PC Impianmu Bersama NeroPC</h2>
+      <p>Spesifikasi terbaik, harga terjangkau, garansi resmi. Pesan sekarang dan dapatkan PC rakitan berkualitas!</p>
+      <a href="#produk" class="btn-hero">Lihat Produk</a>
+    </div>
+  </section>
 
-    <section id="dashboard">
-      <h2>Dashboard</h2>
-      <p>
-        Selamat datang di <strong>NeroPC</strong>. Platform penjualan PC rakitan terpercaya
-        dengan berbagai pilihan spesifikasi sesuai kebutuhan dan budget Anda.
-      </p>
+  <!--KONTEN UTAMA-->
+  <main class="layout">
 
-      <article>
-        <h3>Cara Pemesanan</h3>
-        <ol>
-          <li>Pilih spesifikasi PC yang diinginkan di halaman Produk.</li>
-          <li>Masukkan produk ke keranjang belanja.</li>
-          <li>Isi data diri dan alamat pengiriman.</li>
-          <li>Lakukan pembayaran sesuai total harga.</li>
-          <li>PC akan dirakit dan dikirim ke alamat Anda.</li>
-          <li>Konfirmasi penerimaan setelah barang tiba.</li>
-        </ol>
-      </article>
+    <div class="konten">
 
-    <!-- Produk -->
-    <section id="produk">
-      <h2>Produk</h2>
-      <p>Berikut adalah daftar PC rakitan yang tersedia di NeroPC:</p>
+      <!--Dashboard-->
+      <section id="dashboard">
+        <h2>Dashboard</h2>
+        <p>
+          Selamat datang di <strong>NeroPC</strong>. Platform penjualan PC rakitan terpercaya
+          dengan berbagai pilihan spesifikasi sesuai kebutuhan dan budget Anda.
+        </p>
 
-      <article>
-        <h3>PC Gaming Entry Level</h3>
-        <p>Cocok untuk gaming ringan dan kebutuhan sehari-hari.</p>
-        <ul>
-          <li>Prosesor: Intel Core i3-13100</li>
-          <li>VGA: NVIDIA GTX 1650 4GB</li>
-          <li>RAM: 8GB DDR4</li>
-          <li>Storage: 256GB SSD</li>
-          <li>Harga: <strong>Rp 5.100.000</strong></li>
-        </ul>
-      </article>
+        <article>
+          <h3>Cara Pemesanan</h3>
+          <ol>
+            <li>Pilih spesifikasi PC yang diinginkan di halaman Produk.</li>
+            <li>Masukkan produk ke keranjang belanja.</li>
+            <li>Isi data diri dan alamat pengiriman.</li>
+            <li>Lakukan pembayaran sesuai total harga.</li>
+            <li>PC akan dirakit dan dikirim ke alamat Anda.</li>
+            <li>Konfirmasi penerimaan setelah barang tiba.</li>
+          </ol>
+        </article>
 
-      <hr>
+        <!--Form Pencarian-->
+        <article>
+          <h3>Cari Pesanan</h3>
+          <form class="form-cari" action="#" method="get">
+            <div class="form-group">
+              <label for="nama">Nama Pembeli</label>
+              <input type="text" id="nama" name="nama" placeholder="Masukkan nama pembeli...">
+            </div>
+            <div class="form-group">
+              <label for="status">Status Pesanan</label>
+              <select id="status" name="status">
+                <option value="">-- Semua Status --</option>
+                <option value="menunggu">Menunggu Diproses</option>
+                <option value="dirakit">Sedang Dirakit</option>
+                <option value="konfirmasi">Menunggu Konfirmasi</option>
+                <option value="selesai">Selesai</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="tanggal">Tanggal Order</label>
+              <input type="date" id="tanggal" name="tanggal">
+            </div>
+            <button type="submit" class="btn-cari">Cari Pesanan</button>
+          </form>
+        </article>
 
-      <article>
-        <h3>PC Gaming Mid Range</h3>
-        <p>Cocok untuk gaming 1080p dengan setting tinggi.</p>
-        <ul>
-          <li>Prosesor: Intel Core i5-13400F</li>
-          <li>VGA: NVIDIA RTX 3060 12GB</li>
-          <li>RAM: 16GB DDR4</li>
-          <li>Storage: 512GB SSD</li>
-          <li>Harga: <strong>Rp 8.500.000</strong></li>
-        </ul>
-      </article>
+        <!--Tabel Pesanan-->
+        <article>
+          <h3>Pesanan Terbaru</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Nama Pembeli</th>
+                  <th scope="col">Spesifikasi PC</th>
+                  <th scope="col">Total Harga</th>
+                  <th scope="col">Alamat Pengiriman</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Waktu Order</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Budi Santoso</td>
+                  <td>Intel i5-13400F, RTX 3060, 16GB RAM, 512GB SSD</td>
+                  <td>Rp 8.500.000</td>
+                  <td>Jl. Merdeka No. 12, Surabaya</td>
+                  <td>Menunggu Diproses</td>
+                  <td><time datetime="2026-03-10T09:00">10 Mar 2026, 09:00</time></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Dewi Rahayu</td>
+                  <td>AMD Ryzen 5 7600X, RX 7600, 16GB RAM, 1TB SSD</td>
+                  <td>Rp 9.200.000</td>
+                  <td>Jl. Pahlawan No. 5, Bandung</td>
+                  <td>Sedang Dirakit</td>
+                  <td><time datetime="2026-03-10T09:30">10 Mar 2026, 09:30</time></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Andi Wijaya</td>
+                  <td>Intel i7-14700K, RTX 4070, 32GB RAM, 2TB SSD</td>
+                  <td>Rp 18.750.000</td>
+                  <td>Jl. Sudirman No. 88, Jakarta</td>
+                  <td>Selesai</td>
+                  <td><time datetime="2026-03-10T10:00">10 Mar 2026, 10:00</time></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Sari Indah</td>
+                  <td>AMD Ryzen 7 7700X, RTX 4060 Ti, 32GB RAM, 1TB SSD</td>
+                  <td>Rp 14.300.000</td>
+                  <td>Jl. Diponegoro No. 3, Yogyakarta</td>
+                  <td>Menunggu Konfirmasi</td>
+                  <td><time datetime="2026-03-10T10:15">10 Mar 2026, 10:15</time></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Rizky Pratama</td>
+                  <td>Intel i3-13100, GTX 1650, 8GB RAM, 256GB SSD</td>
+                  <td>Rp 5.100.000</td>
+                  <td>Jl. Ahmad Yani No. 21, Malang</td>
+                  <td>Menunggu Diproses</td>
+                  <td><time datetime="2026-03-10T10:45">10 Mar 2026, 10:45</time></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
 
-      <hr>
+      <!--Produk-->
+      <section id="produk">
+        <h2>Produk</h2>
+        <p>Berikut adalah daftar PC rakitan yang tersedia di NeroPC:</p>
 
-      <article>
-        <h3>PC Gaming High End</h3>
-        <p>Cocok untuk gaming 4K, editing video, dan rendering.</p>
-        <ul>
-          <li>Prosesor: Intel Core i7-14700K</li>
-          <li>VGA: NVIDIA RTX 4070 12GB</li>
-          <li>RAM: 32GB DDR5</li>
-          <li>Storage: 2TB NVMe SSD</li>
-          <li>Harga: <strong>Rp 18.750.000</strong></li>
-        </ul>
-      </article>
-    </section>
+        <div class="produk-grid">
+
+          <article class="kartu-produk">
+            <h3>Entry Level</h3>
+            <p>Cocok untuk gaming ringan dan kebutuhan sehari-hari.</p>
+            <ul>
+              <li>Prosesor: Intel Core i3-13100</li>
+              <li>VGA: NVIDIA GTX 1650 4GB</li>
+              <li>RAM: 8GB DDR4</li>
+              <li>Storage: 256GB SSD</li>
+            </ul>
+            <p class="harga">Rp 5.100.000</p>
+            <a href="#kontak" class="btn-pesan">Pesan Sekarang</a>
+          </article>
+
+          <article class="kartu-produk">
+            <h3>Mid Range</h3>
+            <p>Cocok untuk gaming 1080p dengan setting tinggi.</p>
+            <ul>
+              <li>Prosesor: Intel Core i5-13400F</li>
+              <li>VGA: NVIDIA RTX 3060 12GB</li>
+              <li>RAM: 16GB DDR4</li>
+              <li>Storage: 512GB SSD</li>
+            </ul>
+            <p class="harga">Rp 8.500.000</p>
+            <a href="#kontak" class="btn-pesan">Pesan Sekarang</a>
+          </article>
+
+          <article class="kartu-produk">
+            <h3>High End</h3>
+            <p>Cocok untuk gaming 4K, editing video, dan rendering.</p>
+            <ul>
+              <li>Prosesor: Intel Core i7-14700K</li>
+              <li>VGA: NVIDIA RTX 4070 12GB</li>
+              <li>RAM: 32GB DDR5</li>
+              <li>Storage: 2TB NVMe SSD</li>
+            </ul>
+            <p class="harga">Rp 18.750.000</p>
+            <a href="#kontak" class="btn-pesan">Pesan Sekarang</a>
+          </article>
+
+          <article class="kartu-produk">
+            <h3>Workstation Pro</h3>
+            <p>Cocok untuk desainer, arsitek, dan video editor profesional.</p>
+            <ul>
+              <li>Prosesor: AMD Ryzen 9 7950X</li>
+              <li>VGA: NVIDIA RTX 4090 24GB</li>
+              <li>RAM: 64GB DDR5</li>
+              <li>Storage: 4TB NVMe SSD</li>
+            </ul>
+            <p class="harga">Rp 45.000.000</p>
+            <a href="#kontak" class="btn-pesan">Pesan Sekarang</a>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!--SIDEBAR-->
+    <aside id="statistik">
+      <h2>Statistik</h2>
+      <ul class="stat-list">
+        <li>Total Produk Tersedia: <strong>4 Paket</strong></li>
+        <li>Total Pesanan Hari Ini: <strong>25</strong></li>
+        <li>Pesanan Menunggu Diproses: <strong>8</strong></li>
+        <li>Pesanan Sedang Dirakit: <strong>6</strong></li>
+        <li>Pesanan Selesai: <strong>11</strong></li>
+        <li>Total Pendapatan Hari Ini: <strong>Rp 124.500.000</strong></li>
+      </ul>
+
+      <h3>Filter Kategori</h3>
+      <div class="filter-group">
+        <label><input type="checkbox" checked> Entry Level</label>
+        <label><input type="checkbox" checked> Mid Range</label>
+        <label><input type="checkbox" checked> High End</label>
+        <label><input type="checkbox" checked> Workstation Pro</label>
+      </div>
+
+      <h3>Filter Status Pesanan</h3>
+      <div class="filter-group">
+        <label><input type="checkbox" checked> Menunggu Diproses</label>
+        <label><input type="checkbox" checked> Sedang Dirakit</label>
+        <label><input type="checkbox" checked> Menunggu Konfirmasi</label>
+        <label><input type="checkbox" checked> Selesai</label>
+      </div>
+    </aside>
 
   </main>
 
-  <hr>
-
-  <!-- Statistik -->
-  <aside id="statistik">
-    <h2>Statistik</h2>
-    <ul>
-      <li>Total Produk Tersedia: 3 Paket</li>
-      <li>Total Pesanan Hari Ini: 25</li>
-      <li>Pesanan Menunggu Diproses: 8</li>
-      <li>Pesanan Sedang Dirakit: 6</li>
-      <li>Pesanan Selesai: 11</li>
-      <li>Total Pendapatan Hari Ini: Rp 124.500.000</li>
-    </ul>
-  </aside>
-
-  <hr>
-
-  <!-- Kontak -->
+  <!--FOOTER-->
   <footer id="kontak">
-    <h2>Kontak</h2>
-    <p>Hubungi kami untuk informasi lebih lanjut atau pemesanan khusus.</p>
-    <p>Email: admin@neropc.id</p>
-    <p>Telepon: 0812-3456-7890</p>
-    <p>Alamat: Jalan2 doang jadian kagak No. 88, Surabaya, Jawa Timur</p>
-    <p>Jam Operasional: Senin - Sabtu, 08.00 - 20.00 WIB</p>
-    <hr>
-    <p>&copy; 2026 NeroPC. All rights reserved.</p>
+    <section class="footer-grid">
+
+      <section class="footer-col">
+        <h3>NeroPC</h3>
+        <p>Platform penjualan dan perakitan PC terpercaya di Indonesia sejak 2020.</p>
+      </section>
+
+      <nav class="footer-col" aria-label="Menu Footer">
+        <h3>Menu</h3>
+        <ul>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#produk">Produk</a></li>
+          <li><a href="#statistik">Statistik</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+
+      <address class="footer-col">
+        <h3>Hubungi Kami</h3>
+        <p>Email: admin@neropc.id</p>
+        <p>Telepon: 0812-3456-7890</p>
+        <p>Alamat: Jl. Teknologi Raya No. 88,<br>Surabaya, Jawa Timur</p>
+        <p>Jam: Senin - Sabtu, 08.00 - 20.00 WIB</p>
+      </address>
+
+    </section>
+    <p class="footer-copy">&copy; 2026 NeroPC. All rights reserved.</p>
   </footer>
 
 </body>
