@@ -12,29 +12,7 @@
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header id="app-header">
-    <div class="header-brand">
-      <img src="Logo Sementara.png" alt="Logo NeroPC" width="48" height="48">
-      <div class="header-text">
-        <h1>NeroPC</h1>
-        <p>Sistem Informasi Penjualan PC Rakitan</p>
-      </div>
-    </div>
-    <nav aria-label="Navigasi Utama">
-      <ul>
-        <li><a href="#statistik-section" class="nav-link active" data-section="statistik-section">
-          <span class="nav-icon">📊</span> Dashboard
-        </a></li>
-        <li><a href="#form-section" class="nav-link" data-section="form-section">
-          <span class="nav-icon">🖥️</span> Tambah PC
-        </a></li>
-        <li><a href="#daftar-section" class="nav-link" data-section="daftar-section">
-          <span class="nav-icon">📋</span> Daftar Produk
-        </a></li>
-      </ul>
-    </nav>
-  </header>
+  @include('partials.navbar')
 
   <!-- HERO BANNER -->
   <section class="hero" id="hero-banner">
@@ -51,6 +29,12 @@
 
   <!-- MAIN CONTENT -->
   <main class="main-container">
+    @if(session('success'))
+      <div style="background-color: #d4edda; color: #155724; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
+        {{ session('success') }}
+      </div>
+    @endif
+
     @yield('content')
   </main>
 
@@ -60,7 +44,7 @@
 
       <section class="footer-col">
         <div class="footer-brand">
-          <img src="Logo Sementara.png" alt="Logo NeroPC" width="40" height="40">
+          <img src="{{ asset('images/Logo Sementara.png') }}" alt="Logo NeroPC" width="40" height="40">
           <h3>NeroPC</h3>
         </div>
         <p>Platform penjualan dan perakitan PC terpercaya di Indonesia sejak 2020.</p>
@@ -103,5 +87,6 @@
     </div>
   </div>
 
+  @stack('scripts')
 </body>
 </html>

@@ -12,7 +12,7 @@ class PcController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        return view('dashboard');
     }
 
     /**
@@ -21,7 +21,7 @@ class PcController extends Controller
      */
     public function create()
     {
-        return view('welcome');
+        return view('dashboard');
     }
 
     /**
@@ -30,6 +30,6 @@ class PcController extends Controller
      */
     public function list()
     {
-        return view('welcome');
+        return view('dashboard');
     }
 }
