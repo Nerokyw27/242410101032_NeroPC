@@ -1,23 +1,34 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PcController;
+
 use App\Http\Controllers\DashboardController;
 
-//Route NeroPC
-Route::get('/', [PcController::class, 'index'])->name('dashboard');
-Route::get('/tambah-pc', [PcController::class, 'create'])->name('pc.create');
-Route::get('/daftar-produk', [PcController::class, 'list'])->name('pc.index');
-
-
-Route::get('/test-flash', function () {
-    return redirect()->route('dashboard')->with('success', 'Pesan ini adalah contoh Flash Session yang berhasil dipanggil!');
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::get('/tentang', function () {
-    return view('tentang');
-})->name('tentang');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/kontak', function () {
-    return view('kontak');
-})->name('kontak');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Admin only
+    Route::middleware(['admin'])->group(function () {
+        Route::resource('pc', \App\Http\Controllers\PcController::class);
+    });
+
+    // Customer / All authenticated
+    Route::get('/katalog', [\App\Http\Controllers\KatalogController::class, 'index'])->name('katalog.index');
+    Route::get('/katalog/{pc}', [\App\Http\Controllers\KatalogController::class, 'show'])->name('katalog.show');
+
+    Route::view('/tentang', 'tentang')->name('tentang');
+    Route::view('/kontak', 'kontak')->name('kontak');
+});
+
+require __DIR__.'/auth.php';

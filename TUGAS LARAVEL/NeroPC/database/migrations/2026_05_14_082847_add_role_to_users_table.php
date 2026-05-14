@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mata_kuliahs', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode')->unique();
-            $table->string('nama_mk');
-            $table->integer('sks')->default(2);
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('role')->default('user')->after('email');
         });
     }
 
-
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('mata_kuliahs');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };
