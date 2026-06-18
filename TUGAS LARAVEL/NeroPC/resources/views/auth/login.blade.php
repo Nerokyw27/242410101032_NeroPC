@@ -1,47 +1,117 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.app')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section('title', 'Login - NeroPC')
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+@section('content')
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h2>Masuk ke NeroPC</h2>
+            <p>Silakan masuk menggunakan akun Anda untuk melanjutkan transaksi.</p>
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        @if($errors->any())
+            <div class="alert alert-error">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+        <form id="form-login" action="{{ route('login.post') }}" method="POST" novalidate>
+            @csrf
+            <div class="form-group">
+                <label for="email">Alamat Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="cth: budi@gmail.com" autocomplete="off">
+                <span class="error-msg" id="error-email"></span>
+            </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <div class="form-group">
+                <label for="password">Password <span class="required">*</span></label>
+                <input type="password" id="password" name="password" placeholder="Masukkan password Anda">
+                <span class="error-msg" id="error-password"></span>
+            </div>
+
+
+            <button type="submit" class="btn-primary btn-block">
+                Masuk Sekarang
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Belum memiliki akun? <a href="{{ route('register') }}">Daftar di sini</a></p>
         </div>
+    </div>
+</div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('form-login');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+    const errEmail = document.getElementById('error-email');
+    const errPassword = document.getElementById('error-password');
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    const setError = (input, errEl, msg) => {
+        input.classList.add('input-error');
+        errEl.textContent = msg;
+    };
+
+    const clearError = (input, errEl) => {
+        input.classList.remove('input-error');
+        errEl.textContent = '';
+    };
+
+    const validateEmail = (val) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(val);
+    };
+
+    // Real-time validations
+    email.addEventListener('input', function () {
+        const val = email.value.trim();
+        if (!val) {
+            setError(email, errEmail, 'Email wajib diisi');
+        } else if (!validateEmail(val)) {
+            setError(email, errEmail, 'Format email tidak valid');
+        } else {
+            clearError(email, errEmail);
+        }
+    });
+
+    password.addEventListener('input', function () {
+        const val = password.value;
+        if (!val) {
+            setError(password, errPassword, 'Password wajib diisi');
+        } else {
+            clearError(password, errPassword);
+        }
+    });
+
+    // Form submit validation
+    form.addEventListener('submit', function (e) {
+        let valid = true;
+
+        if (!email.value.trim()) {
+            setError(email, errEmail, 'Email wajib diisi');
+            valid = false;
+        } else if (!validateEmail(email.value.trim())) {
+            setError(email, errEmail, 'Format email tidak valid');
+            valid = false;
+        }
+
+        if (!password.value) {
+            setError(password, errPassword, 'Password wajib diisi');
+            valid = false;
+        }
+
+        if (!valid) {
+            e.preventDefault();
+        }
+    });
+});
+</script>
+@endsection
